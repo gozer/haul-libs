@@ -9,5 +9,5 @@ def buildSite() {
 }
 
 def syncSite(args="--delete") {
-  sh "aws --region \"$(nubis-region)\" s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
+  sh "aws --region \"\$(nubis-region)\" s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
 }
