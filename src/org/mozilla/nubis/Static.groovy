@@ -11,5 +11,5 @@ def buildSite() {
 def syncSite(args="--delete") {
   //sh "rclone -q sync ${excludes} dst/ s3:${env.SITE_BUCKET}/${env.JOB_BASE_NAME}/"
   //sh "rclone -q sync ${excludes} dst/ s3:${env.SITE_BUCKET}/"
-  sh "aws s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
+  sh "aws --region "$(nubis-region)" s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
 }
