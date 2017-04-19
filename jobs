@@ -14,7 +14,7 @@ sites.each {
     description "Job for ${site_name}"
     triggers {
         scm("${poll_frequency}")
-        periodic("${build_frequency}")
+        cron("${build_frequency}")
     }
     environmentVariables {
         env('SITE_BUCKET', site_config['bucket_name'])
