@@ -7,12 +7,14 @@ def sites = parser.load(("/etc/haul/sites.yaml" as File).text)
 sites.each {
    def site_name = it.key
    def site_config = it.value
-   def site_frequency = site_config['frequency'] ?: "H/5 * * * *"
+   def poll_frequency = site_config['poll_frequency'] ?: "H/15 * * * *"
+   def build_frequency = site_config['build_frequency'] ?: "@daily"
     
   pipelineJob(site_name) {
     description "Job for ${site_name}"
     triggers {
-        scm("${site_frequency}")
+        scm("${poll_frequency}")
+        periodic("${build_frequency}")
     }
     environmentVariables {
         env('SITE_BUCKET', site_config['bucket_name'])
