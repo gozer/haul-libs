@@ -17,7 +17,6 @@ sites.each {
         cron("${build_frequency}")
     }
     environmentVariables {
-        env('SITE_BUCKET', site_config['bucket_name'])
     }
     definition {
         cpsScm {
