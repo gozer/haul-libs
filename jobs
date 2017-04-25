@@ -17,6 +17,8 @@ sites.each {
         cron("${build_frequency}")
     }
     environmentVariables {
+        keepJenkinsSystemVariables(true)
+        keepBuildVariables(true)
         env('SITE_BUCKET', site_config['bucket_name'])
     }
     definition {
