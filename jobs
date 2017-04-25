@@ -16,12 +16,7 @@ sites.each {
         scm("${poll_frequency}")
         cron("${build_frequency}")
     }
-
     environmentVariables {
-        env('http_proxy', 'http://proxy.service.consul:3128/')
-	env('HTTP_PROXY', 'http://proxy.service.consul:3128/')
-        env('https_proxy', 'http://proxy.service.consul:3128/')
-	env('HTTPS_PROXY', 'http://proxy.service.consul:3128/')
         env('SITE_BUCKET', site_config['bucket_name'])
     }
     definition {
