@@ -9,6 +9,6 @@ def buildSite() {
 }
 
 def syncSite(args="--acl public-read --delete") {
-  sh "aws --region \"\$(nubis-region)\" s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
+//  sh "aws --region \"\$(nubis-region)\" s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
   sh "rsync -a --delete dst/ /data/haul/${env.JOB_NAME}/"
 }
