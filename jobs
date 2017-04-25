@@ -16,11 +16,12 @@ sites.each {
         scm("${poll_frequency}")
         cron("${build_frequency}")
     }
-    envInjectJobProperty {
-        keepBuildVariables(true)
-	keepJenkinsSystemVariables(true)   
-    }
+
     environmentVariables {
+        env('http_proxy', "http://consul.service.consul:3128")
+	env('HTTP_PROXY', "http://consul.service.consul:3128")
+        env('https_proxy', "http://consul.service.consul:3128")
+	env('HTTPS_PROXY', "http://consul.service.consul:3128")
         env('SITE_BUCKET', site_config['bucket_name'])
     }
     definition {
