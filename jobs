@@ -16,9 +16,11 @@ sites.each {
         scm("${poll_frequency}")
         cron("${build_frequency}")
     }
-    environmentVariables {
-        keepJenkinsSystemVariables(true)
+    envInjectJobProperty {
         keepBuildVariables(true)
+	keepJenkinsSystemVariables(true)   
+    }
+    environmentVariables {
         env('SITE_BUCKET', site_config['bucket_name'])
     }
     definition {
