@@ -1,7 +1,6 @@
 package org.mozilla.nubis;
 
 def prepSite() {
-  sh "env"
   sh "mkdir -p dst"
 }
 
