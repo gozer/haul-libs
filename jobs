@@ -12,6 +12,7 @@ sites.each {
     
   pipelineJob(site_name) {
     description "Job for ${site_name}"
+    concurrentBuild(false)
     triggers {
         scm("${poll_frequency}")
         cron("${build_frequency}")
