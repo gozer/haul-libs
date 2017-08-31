@@ -10,6 +10,7 @@ sites.each {
    def poll_frequency = site_config['poll_frequency'] ?: "H/15 * * * *"
    def build_frequency = site_config['build_frequency'] ?: "@daily"
    def git_repo = site_config['git_repo'] ?: "https://github.com/mozilla-it/haul.git"
+   def git_branches = site_config['git_branches'] ?: "master"
     
   pipelineJob(site_name) {
     description "Job for ${site_name}"
@@ -24,6 +25,7 @@ sites.each {
         cpsScm {
             scm {
                 git(git_repo)
+                branches(git_branches)
             }
             scriptPath "sites/${site_name}.groovy"
             
