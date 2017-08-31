@@ -24,8 +24,12 @@ sites.each {
     definition {
         cpsScm {
             scm {
-                git(git_repo)
-                branches(git_branches)
+                git {
+                  remote {
+                    url(git_repo)
+                  }
+                  branches(git_branches)
+                }
             }
             scriptPath "sites/${site_name}.groovy"
             
