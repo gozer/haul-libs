@@ -10,5 +10,5 @@ def buildSite() {
 
 def syncSite(args="-av --delete-after --delete") {
 //  sh "aws --region \"\$(nubis-region)\" s3 sync ${args} dst/ s3://${env.SITE_BUCKET}/"
-  sh "rsync ${args} dst/ /data/haul/${env.JOB_NAME}/"
+  sh "rsync ${args} dst/ /data/\$(nubis-metadata NUBIS_PROJECT)/${env.JOB_NAME}/"
 }
